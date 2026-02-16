@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #fff;
+  touch-action: none;
+}
+
+#ar-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+#ar-container canvas {
+  display: block;
+}
+
+#ar-container video {
+  position: fixed;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+/* Loading Screen */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #0a0a0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loading-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loader-ring {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  border: 2px solid rgba(0, 210, 255, 0.15);
+  border-top-color: #00d2ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loader-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.loader-progress {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.loader-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00d2ff, #7b2ffc);
+  border-radius: 1px;
+  transition: width 0.3s ease;
+}
+
+/* Permission Prompt */
+#permission-prompt {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgba(10, 10, 15, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+}
+
+#permission-prompt.hidden {
+  display: none;
+}
+
+.permission-content {
+  text-align: center;
+  padding: 2rem;
+  max-width: 320px;
+}
+
+.permission-icon {
+  color: #00d2ff;
+  margin-bottom: 1.5rem;
+}
+
+.permission-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.permission-content p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+#permission-btn {
+  background: linear-gradient(135deg, #00d2ff, #7b2ffc);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.85rem 2.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#permission-btn:active {
+  transform: scale(0.96);
+}
+
+#permission-btn:hover {
+  box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+}
+
+/* Instruction Overlay */
+#instruction-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#instruction-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.instruction-content {
+  text-align: center;
+}
+
+.flip-icon {
+  color: rgba(0, 210, 255, 0.8);
+  margin-bottom: 1.2rem;
+  animation: flip-hint 2s ease-in-out infinite;
+}
+
+@keyframes flip-hint {
+  0%, 100% { transform: rotateY(0deg); opacity: 0.8; }
+  50% { transform: rotateY(180deg); opacity: 1; }
+}
+
+.instruction-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4rem;
+}
+
+.instruction-subtext {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.02em;
+}

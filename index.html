@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#000000" />
+  <title>AR Business Card</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <p class="loader-text">Initializing AR...</p>
+      <div class="loader-progress">
+        <div class="loader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Camera Permission Prompt -->
+  <div id="permission-prompt" class="hidden">
+    <div class="permission-content">
+      <div class="permission-icon">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+        </svg>
+      </div>
+      <h2>Camera Access Required</h2>
+      <p>To view the AR experience, we need access to your camera. No data is stored or transmitted.</p>
+      <button id="permission-btn">Enable Camera</button>
+    </div>
+  </div>
+
+  <!-- Instruction Overlay -->
+  <div id="instruction-overlay" class="hidden">
+    <div class="instruction-content">
+      <div class="flip-icon">
+        <svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="12" y="14" width="40" height="26" rx="3" />
+          <path d="M32 48 L26 42 M32 48 L38 42" />
+          <path d="M32 40 L32 48" />
+        </svg>
+      </div>
+      <p class="instruction-text">Flip the card over to the logo side</p>
+      <p class="instruction-subtext">Hold it in view of your camera</p>
+    </div>
+  </div>
+
+  <!-- AR Container -->
+  <div id="ar-container"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
